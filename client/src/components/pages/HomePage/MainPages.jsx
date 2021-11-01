@@ -15,7 +15,6 @@ import { removeProducts } from "../../../redux/features/products";
 import { NavLink, Link } from "react-router-dom";
 import { userBasket } from "../../../redux/features/application";
 import { useState } from "react";
-import Rating from "@material-ui/lab/Rating";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -236,7 +235,6 @@ function MainPages() {
           />
         </div>
       </div>
-      <hr />
       <Grid>
         <Typography className={classes.allbrand}>NEW PRODUCTS</Typography>
         <Typography className={classes.allbrands}>POPULAR PRODUCTS</Typography>
@@ -246,7 +244,6 @@ function MainPages() {
           <Typography className={classes.spisok}>FEATURED IN</Typography>
           <Typography className={classes.spisok}>RECENT ARRIVAL</Typography>
         </Grid>
-        <hr />
         <Card spacing={5} className={classes.root}>
           {products?.map((item) => {
             return (
@@ -266,7 +263,6 @@ function MainPages() {
                       className={classes.productname}
                     >
                       {item.name}
-                      <br /> <Rating name="simple-controlled" />
                     </Typography>
                   </CardContent>
                   <Box className={classes.productinfo}>{item.price} ₽</Box>

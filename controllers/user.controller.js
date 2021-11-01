@@ -5,8 +5,7 @@ const jwt = require("jsonwebtoken");
 module.exports.userController = {
   registerUser: async (req, res) => {
     try {
-      const { name, email, login, password, ConfirmPassword, basket } =
-        req.body;
+      const { name, email, login, password, ConfirmPassword } = req.body;
 
       const candidate = await User.findOne({ login });
 
@@ -26,7 +25,6 @@ module.exports.userController = {
         login: login,
         password: hash,
         ConfirmPassword,
-        basket,
       });
       res.json(user);
     } catch (error) {
@@ -62,18 +60,11 @@ module.exports.userController = {
     });
     res.json({ token });
   },
-  getUserBasket: async (req, res) => {
-    try {
-      const product = await Product.find({ basket: req.params.id });
-      res.json(product);
-    } catch (e) {
-      res.json("Ошибка");
-    }
-  },
+
   getUser: async (req, res) => {
     try {
-      const user = await User.findById(req.params.id);
-      res.json(user);
+      const get = await User.find();
+      res.json(get);
     } catch (err) {
       res.json(err);
     }
@@ -95,23 +86,14 @@ module.exports.userController = {
       res.json(err);
     }
   },
-
-  addProductBasket: async (req, res) => {
+  getUserById: async (req, res) => {
     try {
-      const { id } = req.params;
-
-      const user = await User.findByIdAndUpdate(
-        req.user.id,
-        { $addToSet: { basket: id } },
-        { new: true }
-      );
-
-      const basket = await User.findById(req.user.id).populate("basket");
-
-      res.status(200).json(basket.basket);
+      const user = await User.findById(req.params.id);
+      res.json(user);
     } catch (e) {
-      console.log(e);
-      res.status(401).json("Ошибка при добавлении в корзину пользователя");
+      return res.status(400).json({
+        error: e.toString(),
+      });
     }
   },
 };

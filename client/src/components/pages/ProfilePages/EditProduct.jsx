@@ -86,12 +86,12 @@ function EditProduct() {
     setPrice(e.target.value);
   };
 
-  const handleAddProduct = () => {
-    dispatch(editProducts(id, name, price, category));
-  };
-
   const handleAddImage = async (e) => {
     await dispatch(addImage(e));
+  };
+
+  const handleAddProduct = () => {
+    dispatch(editProducts(id, name, price, category));
   };
 
   const handleAddId = (id) => {

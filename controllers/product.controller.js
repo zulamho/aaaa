@@ -4,19 +4,21 @@ const jwt = require("jsonwebtoken");
 
 module.exports.productController = {
   addProduct: async (req, res) => {
-    const { name, price, category, image, description, number } = req.body;
+    const { name, price, category, number, description, image } = req.body;
     try {
       const product = await Product.create({
         user: req.user.id,
-        pathImages: image,
         name,
         price,
         category,
+        number,
         description,
+        pathImages: image,
       });
       res.json(product);
     } catch (e) {
-      res.status(401).json("Неверный токен");
+      console.log(e);
+      res.status(401).json("Ошибка при добавлении");
     }
   },
 
@@ -32,23 +34,6 @@ module.exports.productController = {
   getProductOne: async (req, res) => {
     try {
       const product = await Product.findById(req.params.id);
-      res.json(product);
-    } catch (e) {
-      res.json("Ошибка");
-    }
-  },
-
-  getProductsCategory: async (req, res) => {
-    try {
-      const product = await Product.find({ category: req.params.id });
-      res.json(product);
-    } catch (e) {
-      res.json("Ошибка");
-    }
-  },
-  getProductsBasket: async (req, res) => {
-    try {
-      const product = await Product.find({ category: req.params.id });
       res.json(product);
     } catch (e) {
       res.json("Ошибка");
@@ -99,6 +84,15 @@ module.exports.productController = {
       });
     } catch (e) {
       res.json(e);
+    }
+  },
+
+  getProductsCategory: async (req, res) => {
+    try {
+      const product = await Product.find({ category: req.params.id });
+      res.json(product);
+    } catch (e) {
+      res.json("Ошибка");
     }
   },
 };

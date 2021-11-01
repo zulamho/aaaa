@@ -2,26 +2,20 @@ const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema(
   {
-    name: {
+    name:{
       type: String,
-      required: true,
+      required: true
     },
-    email: {
+    email:{
       type: String,
-      required: true,
+      required: true
     },
-    basket: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Product",
-      },
-    ],
     login: String,
     password: String,
     ConfirmPassword: {
       type: String,
-      required: true,
-    },
+      required: true
+    }
   },
   { timestamps: true }
 );

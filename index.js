@@ -13,18 +13,18 @@ app.use(cors());
 app.use("/image", express.static(path.resolve(__dirname, "image")));
 app.use(require("./routes/index"));
 
+app.use(express.static(path.resolve(__dirname, "client", "build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
 
-//fdjkf
 mongoose
-  .connect(
-    "mongodb+srv://into:code@cluster0.56zzw.mongodb.net/quadcopter?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(process.env.MONGO_SERVER, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
-    app.listen(4000, () => {
+    app.listen(process.env.PORT, () => {
       console.log("server is work");
     });
     console.log("server is ok");

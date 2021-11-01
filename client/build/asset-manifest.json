@@ -1,0 +1,33 @@
+{
+  "files": {
+<<<<<<< HEAD
+    "main.js": "/quadcopter/static/js/main.59532e74.chunk.js",
+    "main.js.map": "/quadcopter/static/js/main.59532e74.chunk.js.map",
+    "runtime-main.js": "/quadcopter/static/js/runtime-main.f884fe7b.js",
+    "runtime-main.js.map": "/quadcopter/static/js/runtime-main.f884fe7b.js.map",
+    "static/js/2.c7ce3b1d.chunk.js": "/quadcopter/static/js/2.c7ce3b1d.chunk.js",
+    "static/js/2.c7ce3b1d.chunk.js.map": "/quadcopter/static/js/2.c7ce3b1d.chunk.js.map",
+    "index.html": "/quadcopter/index.html",
+    "static/js/2.c7ce3b1d.chunk.js.LICENSE.txt": "/quadcopter/static/js/2.c7ce3b1d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f884fe7b.js",
+    "static/js/2.c7ce3b1d.chunk.js",
+    "static/js/main.59532e74.chunk.js"
+=======
+    "main.js": "/quadcopter/static/js/main.36124e23.chunk.js",
+    "main.js.map": "/quadcopter/static/js/main.36124e23.chunk.js.map",
+    "runtime-main.js": "/quadcopter/static/js/runtime-main.f884fe7b.js",
+    "runtime-main.js.map": "/quadcopter/static/js/runtime-main.f884fe7b.js.map",
+    "static/js/2.8d4d303e.chunk.js": "/quadcopter/static/js/2.8d4d303e.chunk.js",
+    "static/js/2.8d4d303e.chunk.js.map": "/quadcopter/static/js/2.8d4d303e.chunk.js.map",
+    "index.html": "/quadcopter/index.html",
+    "static/js/2.8d4d303e.chunk.js.LICENSE.txt": "/quadcopter/static/js/2.8d4d303e.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f884fe7b.js",
+    "static/js/2.8d4d303e.chunk.js",
+    "static/js/main.36124e23.chunk.js"
+>>>>>>> 557b1e875395b9eefdd21a7621fb55dc34647771
+  ]
+}

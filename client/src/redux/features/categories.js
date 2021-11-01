@@ -24,7 +24,7 @@ export const loadCategories = () => {
   return async (dispatch) => {
     dispatch({ type: "product/category/pending" });
 
-    const res = await fetch("http://localhost:4000/category");
+    const res = await fetch("/category");
     const json = await res.json();
 
     dispatch({ type: "product/category/fulfilled", payload: json });

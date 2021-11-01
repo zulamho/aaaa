@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -74,7 +74,6 @@ function SignInPage() {
   const token = useSelector((state) => state.application.token);
 
   const signingIn = useSelector((state) => state.application.signingIn);
-  const error = useSelector((state) => state.application.error);
 
   const handleChangeLogin = (e) => {
     setLogin(e.target.value);
@@ -145,10 +144,8 @@ function SignInPage() {
             >
               Вход
             </Button>
-            
-            <NavLink  to={"/signup"}>
-                Зарегестрироваться
-              </NavLink>
+
+            <NavLink to={"/signup"}>Зарегестрироваться</NavLink>
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

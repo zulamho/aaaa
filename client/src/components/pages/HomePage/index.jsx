@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../../redux/features/products";
+import Footer from "./Footer";
 import Header from "./Header";
 import MainPages from "./MainPages";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import Footer from "./Footer";
 
 function Home() {
   const dispatch = useDispatch();
@@ -15,7 +14,7 @@ function Home() {
   }, [dispatch]);
 
   if (loading) {
-    return <CircularProgress disableShrink />;
+    return <div>loading...</div>;
   }
 
   if (error) {

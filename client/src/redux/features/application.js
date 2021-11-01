@@ -62,7 +62,7 @@ export const createUser = (name, email, login, password, ConfirmPassword) => {
   return async (dispatch) => {
     dispatch({ type: "application/signup/pending" });
 
-    const response = await fetch("http://localhost:4000/user", {
+    const response = await fetch("/user", {
       method: "POST",
       body: JSON.stringify({ name, email, login, password, ConfirmPassword }),
       headers: {
@@ -84,7 +84,7 @@ export const auth = (login, password) => {
   return async (dispatch) => {
     dispatch({ type: "application/signin/pending" });
 
-    const response = await fetch("http://localhost:4000/login", {
+    const response = await fetch("/login", {
       method: "POST",
       body: JSON.stringify({ login, password }),
       headers: {
@@ -115,14 +115,11 @@ export const fetchProductsBasket = (id) => {
     const state = getState();
     dispatch({ type: "product/basket/pending" });
     try {
-      const response = await fetch(
-        "http://localhost:4000/cart/6141c3a0a38940a0244174e9",
-        {
-          headers: {
-            Authorization: `Bearer ${state.application.token}`,
-          },
-        }
-      );
+      const response = await fetch("/cart/6141c3a0a38940a0244174e9", {
+        headers: {
+          Authorization: `Bearer ${state.application.token}`,
+        },
+      });
 
       const json = await response.json();
 

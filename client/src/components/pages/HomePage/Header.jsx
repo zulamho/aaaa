@@ -3,17 +3,13 @@ import {
   Select,
   FormControl,
   MenuItem,
-  InputLabel,
   Box,
-  Input,
-  CardMedia,
-  Card,
   Typography,
 } from "@material-ui/core";
 import React from "react";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import { NavLink, Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { setFilterText } from "../../../redux/features/products";
 import { useDispatch, useSelector } from "react-redux";
 import AccountCircleOutlinedIcon from "@material-ui/icons/AccountCircleOutlined";
@@ -138,9 +134,10 @@ const useStyles = makeStyles((theme) =>
     logolinks: {
       marginTop: "13px",
     },
-
-    nameCategory: {
+    navcat: {
       textDecoration: "none",
+
+      color: "black",
     },
   })
 );
@@ -161,6 +158,7 @@ function Header() {
   useEffect(() => {
     dispatch(loadCategories());
   }, [dispatch]);
+
   if (!token) {
     return (
       <Container className={classes.cardGrid} maxWidth="100%">
@@ -169,14 +167,13 @@ function Header() {
             <Grid>
               <Typography gutterBottom variant="h5" component="h2">
                 <NavLink
-                  className={classes.cardH2}
                   to="/"
                   className={classes.logolink}
                 >
                   <Grid className={classes.logolinks}>QUADRO</Grid>
                   <img
                     className={classes.logoimg}
-                    src="C:\Users\ilezk\Desktop\quadcopter\client\src\2222.png"
+                    src="https://raw.githubusercontent.com/thebestdevelopering/quadcopter/main/client/src/11221.png"
                     alt=""
                   />
                 </NavLink>
@@ -198,8 +195,9 @@ function Header() {
                   {categories.map((item) => (
                     <MenuItem key={item.value} value={item._id}>
                       <Link
-                        className={classes.nameCategory}
+                        textDecoration="none"
                         to={`/category/${item._id}`}
+                        className={classes.navcat}
                       >
                         {item.name}
                       </Link>
@@ -225,10 +223,7 @@ function Header() {
                   onChange={(e) => dispatch(setFilterText(e.target.value))}
                 />
               </Box>
-              <NavLink to="/t">
-                <ShoppingCartOutlinedIcon className={classes.cart} />
-              </NavLink>
-
+              <ShoppingCartOutlinedIcon className={classes.cart} to="/sss" />
               <NavLink className={classes.link} to={"/signin"}>
                 <AccountCircleOutlinedIcon />
               </NavLink>
@@ -245,14 +240,13 @@ function Header() {
           <Grid>
             <Typography gutterBottom variant="h5" component="h2">
               <NavLink
-                className={classes.cardH2}
                 to="/"
                 className={classes.logolink}
               >
                 <Grid className={classes.logolinks}>QUADRO</Grid>
                 <img
                   className={classes.logoimg}
-                  src="./client/src/2222.png"
+                  src="https://raw.githubusercontent.com/thebestdevelopering/quadcopter/main/client/src/11221.png"
                   alt=""
                 />
               </NavLink>
@@ -274,8 +268,9 @@ function Header() {
                 {categories.map((item) => (
                   <MenuItem key={item.value} value={item._id}>
                     <Link
-                      className={classes.nameCategory}
+                      textDecoration="none"
                       to={`/category/${item._id}`}
+                      className={classes.navcat}
                     >
                       {item.name}
                     </Link>
@@ -289,6 +284,7 @@ function Header() {
               <Box className={classes.searchIcon}>
                 <SearchIcon />
               </Box>
+
               <InputBase
                 placeholder="Search…"
                 classes={{
@@ -300,10 +296,10 @@ function Header() {
                 onChange={(e) => dispatch(setFilterText(e.target.value))}
               />
             </Box>
-            <NavLink to="/user/basket">
-              <ShoppingCartOutlinedIcon className={classes.cart} />
+            <NavLink to="/user/basket"> 
+              <ShoppingCartOutlinedIcon className={classes.cart} /> 
             </NavLink>
-            <NavLink className={classes.link} to={"/profilePage"}>
+            <NavLink className={classes.link} to={`/profilepage/`}>
               <AccountCircleOutlinedIcon />
             </NavLink>
           </Grid>

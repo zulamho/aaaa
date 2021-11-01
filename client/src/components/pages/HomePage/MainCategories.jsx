@@ -42,7 +42,6 @@ const useStyles = makeStyles((theme) =>
       flexWrap: "wrap",
       margin: "0px 100px",
       boxShadow: "none",
-      // backgroundColor: "#F2F2F2",
     },
     media: {
       height: 140,
@@ -198,11 +197,9 @@ function MainCategories(props) {
   const { id } = useParams();
   const dispatch = useDispatch();
   const classes = useStyles();
-  const products = useSelector((state) => {
-    return state.products.product;
-  });
+  const products = useSelector((state) => state.products.product);
   const categories = useSelector((state) => state.categories.items);
-
+  const loading = useSelector((state) => state.categories.loadCategories);
   const token = useSelector((state) => state.application.token);
 
   const [value, setValue] = useState(0);
@@ -219,6 +216,10 @@ function MainCategories(props) {
     dispatch(fetchProductsCategory(id));
   }, [dispatch, id]);
 
+  if (loading) {
+    return <div>...</div>;
+  }
+
   return (
     <>
       <Header />
@@ -233,40 +234,42 @@ function MainCategories(props) {
         </Paper>
         <hr />
         <Card spacing={5} className={classes.root}>
-          {products?.map((item) => {
-            return (
-              <Grid className={classes.content}>
-                <Grid className={classes.info}>
-                  <NavLink to={`/product/edit/${item._id}`}>
-                    <CardMedia
-                      className={classes.media}
-                      image={`/${item.pathImages}`}
-                    />
-                  </NavLink>
-                  <CardContent>
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      component="h2"
-                      className={classes.productname}
-                    >
-                      {item.name}
-                    </Typography>
-                  </CardContent>
+          {products === undefined
+            ? ""
+            : products.map((item) => {
+                return (
+                  <Grid className={classes.content}>
+                    <Grid className={classes.info}>
+                      <NavLink to={`/product/${item._id}`}>
+                        <CardMedia
+                          className={classes.media}
+                          image={`/${item.pathImages}`}
+                        />
+                      </NavLink>
+                      <CardContent>
+                        <Typography
+                          gutterBottom
+                          variant="h5"
+                          component="h2"
+                          className={classes.productname}
+                        >
+                          {item.name}
+                        </Typography>
+                      </CardContent>
 
-                  <Box className={classes.productinfo}>{item.price} P</Box>
-                </Grid>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  className={classes.btns}
-                >
-                  Купить
-                </Button>
-                <Grid></Grid>
-              </Grid>
-            );
-          })}
+                      <Box className={classes.productinfo}>{item.price} P</Box>
+                    </Grid>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      className={classes.btns}
+                    >
+                      Купить
+                    </Button>
+                    <Grid></Grid>
+                  </Grid>
+                );
+              })}
         </Card>
       </Grid>
     </>
